@@ -7,7 +7,7 @@ public abstract class Probleme extends Carte {
 		FEU, ESSENCE, CREVAISON, ACCIDENT
 	}
 
-	public Probleme(int nombre, Type type) {
+	protected Probleme(int nombre, Type type) {
 		super(nombre);
 		this.type = type;
 	}
