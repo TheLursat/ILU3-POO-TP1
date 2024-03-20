@@ -20,6 +20,12 @@ public class Borne extends Carte {
 		return "Borne [" + km + "]";
 	}
 	
-	
+	@Override
+	public boolean equals(Object objet) {
+		if(objet instanceof Borne borne ) {
+			return km==borne.getKm();
+		}
+		return false;
+	}
 
 }

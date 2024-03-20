@@ -19,5 +19,13 @@ public abstract class Probleme extends Carte {
 		return type;
 	}
 	
+	@Override
+	public boolean equals(Object objet) {
+		if(objet != null && getClass() == objet.getClass() ) {
+			Probleme probleme = (Probleme) objet;
+			return (type.equals(probleme.getType()));
+		}
+		return false;
+	}
 	
 }
