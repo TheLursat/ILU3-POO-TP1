@@ -21,11 +21,16 @@ public abstract class Probleme extends Carte {
 	
 	@Override
 	public boolean equals(Object objet) {
-		if(objet != null && getClass() == objet.getClass() ) {
+		if(super.equals(objet) ) {  // ecrire super a la place
 			Probleme probleme = (Probleme) objet;
 			return (type.equals(probleme.getType()));
 		}
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return getType().hashCode()*31;
 	}
 	
 }

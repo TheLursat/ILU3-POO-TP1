@@ -20,5 +20,13 @@ public class testUtils {
 	listeCartes = Utils.rassembler(listeCartes);
 	System.out.println(listeCartes);
 	System.out.println("liste rassemblée sans erreur ? " + Utils.verifierRassemblement(listeCartes));
+	
+	
+	
+	JeuDeCartes jeu2 = new JeuDeCartes();
+	System.out.println("\n"+ jeu2.checkCount());
+	
+	
+	
 	}
 }

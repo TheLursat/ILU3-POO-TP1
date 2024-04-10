@@ -7,18 +7,18 @@ import java.util.ListIterator;
 import java.util.Random;
 
 public class Utils {
+	static Random rand = new Random();
 
 	public static <E> E extraire(List<E> liste) {
-		Random rand = new Random();
+		if(liste.isEmpty()) {
+			return null;
+		}
 		int index = rand.nextInt(liste.size());
-		E e = liste.get(index);
-		liste.remove(index);
-		return e;
+		return liste.remove(index);
 		
 	}
 	
 	public static <E> E extraire2(List<E> liste) {
-		Random rand = new Random();
 		int index = rand.nextInt(liste.size());
 		E e = liste.get(0);
 		for(ListIterator<E> it = liste.listIterator(); !it.hasNext() || it.nextIndex() > index;) {
@@ -39,9 +39,15 @@ public class Utils {
 		return listeMelanger;
 	}
 	
-	public static <E> boolean verifierMelange(List<E> liste1, List<E> liste2){
-		for(int i = 0; i < liste2.size(); i++) {
-			if(Collections.frequency(liste2, liste1.get(i)) != Collections.frequency(liste1, liste1.get(i))) {
+	public static <E> boolean verifierMelange(List<E> listeOrigine, List<E> listeAVerifier){
+		for(int i = 0; i < listeAVerifier.size(); i++) {
+			if(Collections.frequency(listeAVerifier, listeOrigine.get(i)) != Collections.frequency(listeOrigine, listeOrigine.get(i))) {
+				return false;
+			}
+		}
+		//verifier pour liste2 par rapport a liste 1 avec un deuxieme for
+		for(int i = 0; i < listeOrigine.size(); i++) {
+			if(Collections.frequency(listeOrigine, listeAVerifier.get(i)) != Collections.frequency(listeAVerifier, listeAVerifier.get(i))) {
 				return false;
 			}
 		}
@@ -80,7 +86,7 @@ public class Utils {
 		E current;
 		for(ListIterator<E> it = liste.listIterator(); it.hasNext();) {
 			current=it.next();
-			if(current.equals(precedent) && searchElem(liste, precedent, liste.indexOf(current))) {
+			if(!current.equals(precedent) && searchElem(liste, precedent, liste.indexOf(current))) {
 				return false;
 			}
 			precedent = current;

@@ -23,7 +23,7 @@ public class JeuDeCartes {
 				listeCartes.add(carte);
 			}
 		}
-		//listeCartes = Utils.melanger(listeCartes);
+		listeCartes = Utils.melanger(listeCartes);
 	}
 	
 	

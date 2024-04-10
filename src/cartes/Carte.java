@@ -15,5 +15,10 @@ public abstract class Carte {
 	public boolean equals(Object objet) {
 		return(objet != null && objet.getClass()==getClass() );
 	}
+	
+	@Override
+	public int hashCode() {
+		return getClass().hashCode()*31;
+	}
 
 }
